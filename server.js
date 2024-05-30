@@ -6,7 +6,7 @@ var bodyParser = require("body-parser");
 const morgan = require("morgan");
 const helmet = require("helmet");
 const dotenv = require("dotenv");
-const productRoute = require("./routes/product");
+const busStopRoute = require("./routes/busStop");
 
 dotenv.config();
 
@@ -17,7 +17,7 @@ app.use(helmet());
 app.use(cors());
 app.use(morgan("common"));
 
-app.use("/", productRoute);
+app.use("/", busStopRoute);
 
 mongoose.set("strictQuery", false)
 mongoose.connect(process.env.MONGODB_URL).then(() => {
