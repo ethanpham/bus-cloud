@@ -3,8 +3,7 @@ const { BusStop } = require("../models/busStopModel");
 const busStopController = {
     getBusStop: async(req, res) =>{
         try {
-            const {id} = req.params;
-            const busStop = await BusStop.findById(id);
+            const busStop = await BusStop.find().sort({ $natural: -1 }).limit(1)
             res.status(200).json(busStop);
         } catch (error) {
             res.status(500).json({message: error.message})

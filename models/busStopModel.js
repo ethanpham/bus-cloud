@@ -64,6 +64,10 @@ const busStopSchema = mongoose.Schema(
                 }
             },
         },
+        waiting: {
+            type: Boolean,
+            required: true,
+        },
         eta: {
             type: Number,
             required: true,
