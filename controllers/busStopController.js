@@ -1,6 +1,9 @@
 const { BusStop } = require("../models/busStopModel");
 
 const busStopController = {
+    base: (req, res) => {
+        res.send('')
+    },
     getBusStop: async(req, res) =>{
         try {
             const busStop = await BusStop.find().sort({ $natural: -1 }).limit(1)
@@ -9,7 +12,6 @@ const busStopController = {
             res.status(500).json({message: error.message})
         }
     },
-
     getAllBusStops: async(req, res) => {
         try {
             const busStops = await BusStop.find({});
@@ -18,7 +20,6 @@ const busStopController = {
             res.status(500).json({message: error.message})
         }
     },
-
     addBusStop: async(req, res) => {
         try {
             const busStop = await BusStop.create(req.body)
@@ -29,7 +30,6 @@ const busStopController = {
             res.status(500).json({message: error.message})
         }
     },
-
     updateBusStop: async(req, res) => {
         try {
             const {id} = req.params;
@@ -46,7 +46,6 @@ const busStopController = {
             res.status(500).json({message: error.message})
         }
     },
-
     deleteBusStop: async(req, res) =>{
         try {
             const {id} = req.params;

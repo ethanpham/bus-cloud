@@ -6,6 +6,8 @@ var bodyParser = require("body-parser");
 const morgan = require("morgan");
 const helmet = require("helmet");
 const dotenv = require("dotenv");
+const favicon = require('serve-favicon');
+const path = require('path');
 const busStopRoute = require("./routes/busStop");
 
 dotenv.config();
@@ -16,6 +18,7 @@ app.use(bodyParser.json({limit:"50mb"}));
 app.use(helmet());
 app.use(cors());
 app.use(morgan("common"));
+app.use(favicon(path.join(__dirname, 'media', 'favicon.ico')));
 
 app.use("/", busStopRoute);
 

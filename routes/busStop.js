@@ -2,6 +2,9 @@ const busStopController = require("../controllers/busStopController");
 
 const router = require("express").Router();
 
+//GET BASE
+router.get("/", busStopController.base);
+
 //GET BUS STOP INFO
 router.get("/getBusStopInfo", busStopController.getBusStop);
 
